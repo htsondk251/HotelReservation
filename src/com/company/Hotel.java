@@ -2,6 +2,7 @@ package com.company;
 
 import DB.Repository.UserRepository;
 import DB.Virtual.UserDB;
+//import Model.User;
 
 import java.io.File;
 import java.util.List;
@@ -34,21 +35,26 @@ public class Hotel {
 
 
     //before
-    public User register(String email, String password) {
-
-        return null;
-    }
-
-    //refine: after create model
-//    public User register(Model.User user) {
+//    public User register(String email, String password) {
 //        //check email exists?
-//        if (UserDB.checkEmailExist(user.getEmail())) {
-//            return userRepo.insert(new Model.User(user));
-//        }
+//        if (email.equals(UserDB.checkEmailExist())) {}
+//
 //        //create new member
-//        userRepo.insert(user);
+//
 //        return null;
 //    }
+
+    //refine: after create model
+    public Model.User register(Model.User user) {
+        //check email exists?
+        if (!UserDB.checkEmailExist(user.getEmail())) {
+            //create new member
+            //Data package
+            return userRepo.insert(new Model.User(user));
+        } else {
+            return null;
+        }
+    }
 
     public User login(User user) {
         return null;
